@@ -4,4 +4,45 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>control.LoginServlet</servlet-class>
+  </servlet>
+  <display-name>BandSchedule</display-name>
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SignupServlet</display-name>
+    <servlet-name>SignupServlet</servlet-name>
+    <servlet-class>control.SignupServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>DaysServlet</display-name>
+    <servlet-name>DaysServlet</servlet-name>
+    <servlet-class>control.DaysServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>FormServlet</display-name>
+    <servlet-name>FormServlet</servlet-name>
+    <servlet-class>control.FormServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>ConfirmServlet</display-name>
+    <servlet-name>ConfirmServlet</servlet-name>
+    <servlet-class>control.ConfirmServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>DeleteServlet</display-name>
+    <servlet-name>DeleteServlet</servlet-name>
+    <servlet-class>control.DeleteServlet</servlet-class>
+  </servlet>
 </web-app>
