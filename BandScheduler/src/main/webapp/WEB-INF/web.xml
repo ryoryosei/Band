@@ -10,10 +10,10 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>control.LoginServlet</servlet-class>
   </servlet>
-  
+
   <display-name>BandSchedule</display-name>
   <welcome-file-list>
-    <welcome-file>Login.jsp</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
