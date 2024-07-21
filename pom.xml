@@ -19,6 +19,10 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <tomcat.version>8.5.23</tomcat.version><!--追加-->
+
+
   </properties>
 
   <dependencies>
@@ -30,12 +34,40 @@
     </dependency>
 	
 	<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-	<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>javax.servlet-api</artifactId>
-	    <version>4.0.1</version>
-	    <scope>provided</scope>
-	</dependency>
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+        <scope>provided</scope>
+    </dependency>
+
+
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-core</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>          <!--追加-->
+        <artifactId>tomcat-jasper</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jasper-el</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-jsp-api</artifactId>
+        <version>${tomcat.version}</version>
+    </dependency>
+
 
   </dependencies>
 
@@ -74,25 +106,41 @@
         </plugin>
         
         <plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-dependency-plugin</artifactId>
-			<executions>
-				<execution>
-					<phase>package</phase>
-					<goals><goal>copy</goal></goals>
-					<configuration>
-						<artifactItems>
-							<artifactItem>
-								<groupId>com.heroku</groupId>
-								<artifactId>webapp-runner</artifactId>
-								<version>9.0.41.0</version>
-								<destFileName>webapp-runner.jar</destFileName>
-							</artifactItem>
-						</artifactItems>
-					</configuration>
-				</execution>
-			</executions>
-		</plugin>
+          <!--<groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>-->
+
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>appassembler-maven-plugin</artifactId><!--追加-->
+          <version>2.0.0</version>
+
+
+          <executions>
+            <execution>
+              <phase>package</phase>
+              <goals><goal>assemble</goal></goals>
+              <!--<goals><goal>copy</goal></goals>-->
+              <configuration>
+
+                <programs>
+                    <program>
+                        <mainClass>launch.Main</mainClass><!--追加-->
+                        <name>webapp</name>
+                    </program>
+                </programs>
+
+
+                <!--<artifactItems>
+                  <artifactItem>
+                    <groupId>com.heroku</groupId>
+                    <artifactId>webapp-runner</artifactId>
+                    <version>9.0.41.0</version>
+                    <destFileName>webapp-runner.jar</destFileName>
+                  </artifactItem>
+                </artifactItems>-->
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
 
   </build>
